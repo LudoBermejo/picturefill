@@ -1,4 +1,4 @@
-/*! Picturefill - v3.0.2
+/*! Starz - Picturefill - v3.0.2
  * http://scottjehl.github.io/picturefill
  * Copyright (c) 2015 https://github.com/scottjehl/picturefill/blob/master/Authors.txt;
  *  License: MIT
@@ -62,17 +62,17 @@
 
 	// (Don't use \s, to avoid matching non-breaking space.)
 	var regexLeadingSpaces = /^[ \t\n\r\u000c]+/,
-	    regexLeadingCommasOrSpaces = /^[, \t\n\r\u000c]+/,
-	    regexLeadingNotSpaces = /^[^ \t\n\r\u000c]+/,
-	    regexTrailingCommas = /[,]+$/,
-	    regexNonNegativeInteger = /^\d+$/,
+		regexLeadingCommasOrSpaces = /^[, \t\n\r\u000c]+/,
+		regexLeadingNotSpaces = /^[^ \t\n\r\u000c]+/,
+		regexTrailingCommas = /[,]+$/,
+		regexNonNegativeInteger = /^\d+$/,
 
-	    // ( Positive or negative or unsigned integers or decimals, without or without exponents.
-	    // Must include at least one digit.
-	    // According to spec tests any decimal point must be followed by a digit.
-	    // No leading plus sign is allowed.)
-	    // https://html.spec.whatwg.org/multipage/infrastructure.html#valid-floating-point-number
-	    regexFloatingPoint = /^-?(?:[0-9]+|[0-9]*\.[0-9]+)(?:[eE][+-]?[0-9]+)?$/;
+	// ( Positive or negative or unsigned integers or decimals, without or without exponents.
+	// Must include at least one digit.
+	// According to spec tests any decimal point must be followed by a digit.
+	// No leading plus sign is allowed.)
+	// https://html.spec.whatwg.org/multipage/infrastructure.html#valid-floating-point-number
+		regexFloatingPoint = /^-?(?:[0-9]+|[0-9]*\.[0-9]+)(?:[eE][+-]?[0-9]+)?$/;
 
 	var on = function(obj, evt, fn, capture) {
 		if ( obj.addEventListener ) {
@@ -102,10 +102,10 @@
 	// http://jsperf.com/whitespace-character/5
 	function isSpace(c) {
 		return (c === "\u0020" || // space
-		        c === "\u0009" || // horizontal tab
-		        c === "\u000A" || // new line
-		        c === "\u000C" || // form feed
-		        c === "\u000D");  // carriage return
+		c === "\u0009" || // horizontal tab
+		c === "\u000A" || // new line
+		c === "\u000C" || // form feed
+		c === "\u000D");  // carriage return
 	}
 
 	/**
@@ -129,26 +129,26 @@
 		var buildStr = memoize(function(css) {
 
 			return "return " + replace((css || "").toLowerCase(),
-				// interpret `and`
-				/\band\b/g, "&&",
+					// interpret `and`
+					/\band\b/g, "&&",
 
-				// interpret `,`
-				/,/g, "||",
+					// interpret `,`
+					/,/g, "||",
 
-				// interpret `min-` as >=
-				/min-([a-z-\s]+):/g, "e.$1>=",
+					// interpret `min-` as >=
+					/min-([a-z-\s]+):/g, "e.$1>=",
 
-				// interpret `max-` as <=
-				/max-([a-z-\s]+):/g, "e.$1<=",
+					// interpret `max-` as <=
+					/max-([a-z-\s]+):/g, "e.$1<=",
 
-				//calc value
-				/calc([^)]+)/g, "($1)",
+					//calc value
+					/calc([^)]+)/g, "($1)",
 
-				// interpret css values
-				/(\d+[\.]*[\d]*)([a-z]+)/g, "($1 * e.$2)",
-				//make eval less evil
-				/^(?!(e.[a-z]|[0-9\.&=|><\+\-\*\(\)\/])).*/ig, ""
-			) + ";";
+					// interpret css values
+					/(\d+[\.]*[\d]*)([a-z]+)/g, "($1 * e.$2)",
+					//make eval less evil
+					/^(?!(e.[a-z]|[0-9\.&=|><\+\-\*\(\)\/])).*/ig, ""
+				) + ";";
 		});
 
 		return function(css, length) {
@@ -406,7 +406,7 @@
 
 		function collectCharacters(regEx) {
 			var chars,
-			    match = regEx.exec(input.substring(pos));
+				match = regEx.exec(input.substring(pos));
 			if (match) {
 				chars = match[ 0 ];
 				pos += chars.length;
@@ -415,23 +415,23 @@
 		}
 
 		var inputLength = input.length,
-		    url,
-		    descriptors,
-		    currentDescriptor,
-		    state,
-		    c,
+			url,
+			descriptors,
+			currentDescriptor,
+			state,
+			c,
 
-		    // 2. Let position be a pointer into input, initially pointing at the start
-		    //    of the string.
-		    pos = 0,
+		// 2. Let position be a pointer into input, initially pointing at the start
+		//    of the string.
+			pos = 0,
 
-		    // 3. Let candidates be an initially empty source set.
-		    candidates = [];
+		// 3. Let candidates be an initially empty source set.
+			candidates = [];
 
 		/**
-		* Adds descriptor properties to a candidate, pushes to the candidates array
-		* @return undefined
-		*/
+		 * Adds descriptor properties to a candidate, pushes to the candidates array
+		 * @return undefined
+		 */
 		// (Declared outside of the while loop so that it's only created once.
 		// (This fn is defined before it is used, in order to pass JSHINT.
 		// Unfortunately this breaks the sequencing of the spec comments. :/ )
@@ -443,9 +443,9 @@
 			// 10. Let width be absent.
 			// 11. Let density be absent.
 			// 12. Let future-compat-h be absent. (We're implementing it now as h)
-			    w, d, h, i,
-			    candidate = {},
-			    desc, lastChar, value, intVal, floatVal;
+				w, d, h, i,
+				candidate = {},
+				desc, lastChar, value, intVal, floatVal;
 
 			// 13. For each descriptor in descriptors, run the appropriate set of steps
 			// from the following list:
@@ -469,8 +469,8 @@
 					// Otherwise, let width be the result.
 					if (intVal === 0) {pError = true;} else {w = intVal;}
 
-				// If the descriptor consists of a valid floating-point number followed by
-				// a U+0078 LATIN SMALL LETTER X character
+					// If the descriptor consists of a valid floating-point number followed by
+					// a U+0078 LATIN SMALL LETTER X character
 				} else if (regexFloatingPoint.test(value) && (lastChar === "x")) {
 
 					// If width, density and future-compat-h are not all absent, then let error
@@ -482,8 +482,8 @@
 					// be the result.
 					if (floatVal < 0) {pError = true;} else {d = floatVal;}
 
-				// If the descriptor consists of a valid non-negative integer followed by
-				// a U+0068 LATIN SMALL LETTER H character
+					// If the descriptor consists of a valid non-negative integer followed by
+					// a U+0068 LATIN SMALL LETTER H character
 				} else if (regexNonNegativeInteger.test(value) && (lastChar === "h")) {
 
 					// If height and density are not both absent, then let error be yes.
@@ -494,7 +494,7 @@
 					// be the result.
 					if (intVal === 0) {pError = true;} else {h = intVal;}
 
-				// Anything else, Let error be yes.
+					// Anything else, Let error be yes.
 				} else {pError = true;}
 			} // (close step 13 for loop)
 
@@ -516,11 +516,11 @@
 		} // (close parseDescriptors fn)
 
 		/**
-		* Tokenizes descriptor properties prior to parsing
-		* Returns undefined.
-		* (Again, this fn is defined before it is used, in order to pass JSHINT.
-		* Unfortunately this breaks the logical sequencing of the spec comments. :/ )
-		*/
+		 * Tokenizes descriptor properties prior to parsing
+		 * Returns undefined.
+		 * (Again, this fn is defined before it is used, in order to pass JSHINT.
+		 * Unfortunately this breaks the logical sequencing of the spec comments. :/ )
+		 */
 		function tokenize() {
 
 			// 8.1. Descriptor tokeniser: Skip whitespace
@@ -545,10 +545,10 @@
 				if (state === "in descriptor") {
 					// Do the following, depending on the value of c:
 
-				  // Space character
-				  // If current descriptor is not empty, append current descriptor to
-				  // descriptors and let current descriptor be the empty string.
-				  // Set state to after descriptor.
+					// Space character
+					// If current descriptor is not empty, append current descriptor to
+					// descriptors and let current descriptor be the empty string.
+					// Set state to after descriptor.
 					if (isSpace(c)) {
 						if (currentDescriptor) {
 							descriptors.push(currentDescriptor);
@@ -556,10 +556,10 @@
 							state = "after descriptor";
 						}
 
-					// U+002C COMMA (,)
-					// Advance position to the next character in input. If current descriptor
-					// is not empty, append current descriptor to descriptors. Jump to the step
-					// labeled descriptor parser.
+						// U+002C COMMA (,)
+						// Advance position to the next character in input. If current descriptor
+						// is not empty, append current descriptor to descriptors. Jump to the step
+						// labeled descriptor parser.
 					} else if (c === ",") {
 						pos += 1;
 						if (currentDescriptor) {
@@ -568,15 +568,15 @@
 						parseDescriptors();
 						return;
 
-					// U+0028 LEFT PARENTHESIS (()
-					// Append c to current descriptor. Set state to in parens.
+						// U+0028 LEFT PARENTHESIS (()
+						// Append c to current descriptor. Set state to in parens.
 					} else if (c === "\u0028") {
 						currentDescriptor = currentDescriptor + c;
 						state = "in parens";
 
-					// EOF
-					// If current descriptor is not empty, append current descriptor to
-					// descriptors. Jump to the step labeled descriptor parser.
+						// EOF
+						// If current descriptor is not empty, append current descriptor to
+						// descriptors. Jump to the step labeled descriptor parser.
 					} else if (c === "") {
 						if (currentDescriptor) {
 							descriptors.push(currentDescriptor);
@@ -584,14 +584,14 @@
 						parseDescriptors();
 						return;
 
-					// Anything else
-					// Append c to current descriptor.
+						// Anything else
+						// Append c to current descriptor.
 					} else {
 						currentDescriptor = currentDescriptor + c;
 					}
-				// (end "in descriptor"
+					// (end "in descriptor"
 
-				// In parens
+					// In parens
 				} else if (state === "in parens") {
 
 					// U+0029 RIGHT PARENTHESIS ())
@@ -600,34 +600,34 @@
 						currentDescriptor = currentDescriptor + c;
 						state = "in descriptor";
 
-					// EOF
-					// Append current descriptor to descriptors. Jump to the step labeled
-					// descriptor parser.
+						// EOF
+						// Append current descriptor to descriptors. Jump to the step labeled
+						// descriptor parser.
 					} else if (c === "") {
 						descriptors.push(currentDescriptor);
 						parseDescriptors();
 						return;
 
-					// Anything else
-					// Append c to current descriptor.
+						// Anything else
+						// Append c to current descriptor.
 					} else {
 						currentDescriptor = currentDescriptor + c;
 					}
 
-				// After descriptor
+					// After descriptor
 				} else if (state === "after descriptor") {
 
 					// Do the following, depending on the value of c:
 					// Space character: Stay in this state.
 					if (isSpace(c)) {
 
-					// EOF: Jump to the step labeled descriptor parser.
+						// EOF: Jump to the step labeled descriptor parser.
 					} else if (c === "") {
 						parseDescriptors();
 						return;
 
-					// Anything else
-					// Set state to in descriptor. Set position to the previous character in input.
+						// Anything else
+						// Set state to in descriptor. Set position to the previous character in input.
 					} else {
 						state = "in descriptor";
 						pos -= 1;
@@ -638,7 +638,7 @@
 				// Advance position to the next character in input.
 				pos += 1;
 
-			// Repeat this step.
+				// Repeat this step.
 			} // (close while true loop)
 		}
 
@@ -668,12 +668,12 @@
 				// (Jump ahead to step 9 to skip tokenization and just push the candidate).
 				parseDescriptors();
 
-			//	Otherwise, follow these substeps:
+				//	Otherwise, follow these substeps:
 			} else {
 				tokenize();
 			} // (close else of step 8)
 
-		// 16. Return to the step labeled splitting loop.
+			// 16. Return to the step labeled splitting loop.
 		} // (Close of big while loop.)
 	}
 
@@ -891,6 +891,9 @@
 	pf.supSrcset = "srcset" in image;
 	pf.supSizes = "sizes" in image;
 	pf.supPicture = !!window.HTMLPictureElement;
+
+	// Force the srcset change
+	pf.supSrcset = pf.supSizes = pf.supPicture = false;
 
 	// UC browser does claim to support srcset and picture, but not sizes,
 	// this extended test reveals the browser does support nothing
@@ -1259,7 +1262,7 @@
 		}
 
 		if ( imageData.srcset === undefined || options.srcset || !pf.supSrcset || element.srcset ) {
-			srcsetAttribute = getImgAttr.call( element, "srcset" );
+			srcsetAttribute = getImgAttr.call( element, "srcset-polyfill" );
 			imageData.srcset = srcsetAttribute;
 			srcsetParsed = true;
 		}
@@ -1366,7 +1369,7 @@
 		pf.fillImg = noop;
 	} else {
 
-		 // Set up picture polyfill by polling the document
+		// Set up picture polyfill by polling the document
 		(function() {
 			var isDomReady;
 			var regReady = window.attachEvent ? /d$|^c/ : /d$|^c|^i/;

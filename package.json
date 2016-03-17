@@ -1,14 +1,14 @@
 {
-  "name": "picturefill",
-  "description": "A responsive image polyfill.",
+  "name": "starz-picturefill",
+  "description": "A fork from picturefill (http://scottjehl.github.com/picturefill/). A polyfill for responsive images (http://picture.responsiveimages.org/) that you can use today.",
   "version": "3.0.2",
-  "homepage": "https://scottjehl.github.io/picturefill/",
-  "bugs": "https://github.com/scottjehl/picturefill/issues",
+  "homepage": "https://github.com/LudoBermejo/picturefill",
+  "bugs": "https://github.com/LudoBermejo/picturefill/issues",
   "license": "MIT",
-  "author": "Scott Jehl <scottjehl@gmail.com>",
+  "author": "Ludo Bermejo <LudoBermejo@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "git@github.com:scottjehl/picturefill.git"
+    "url": "git@github.com:LudoBermejo/picturefill.git"
   },
   "keywords": [
     "picturefill",

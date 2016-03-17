@@ -1,8 +1,8 @@
 {
-  "name": "scottjehl/picturefill",
-  "description": "A responsive image polyfill for <picture>, srcset, sizes, and more.",
+  "name": "ludobermejo/starz-picturefill",
+  "description": "A fork from picturefill (http://scottjehl.github.com/picturefill/). A polyfill for responsive images (http://picture.responsiveimages.org/) that you can use today.",
   "type": "component",
-  "homepage": "http://scottjehl.github.com/picturefill/",
+  "homepage": "http://dev.ludobermejo.es/",
   "license": "MIT",
   "extra": {
     "component": {

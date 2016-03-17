@@ -22,3 +22,5 @@ Temporary Items
 *.bak
 node_modules
 *.zip
+
+.idea/

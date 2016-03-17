@@ -965,6 +965,9 @@
 	pf.supSizes = "sizes" in image;
 	pf.supPicture = !!window.HTMLPictureElement;
 
+	// Force the srcset change
+	pf.supSrcset = pf.supSizes = pf.supPicture = false;
+
 	// UC browser does claim to support srcset and picture, but not sizes,
 	// this extended test reveals the browser does support nothing
 	if (pf.supSrcset && pf.supPicture && !pf.supSizes) {
@@ -1332,7 +1335,7 @@
 		}
 
 		if ( imageData.srcset === undefined || options.srcset || !pf.supSrcset || element.srcset ) {
-			srcsetAttribute = getImgAttr.call( element, "srcset" );
+			srcsetAttribute = getImgAttr.call( element, "srcset-polyfill" );
 			imageData.srcset = srcsetAttribute;
 			srcsetParsed = true;
 		}
